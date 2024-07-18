@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.281);
+    width: 100%;
+    padding: 1em 1em;
+}
+header ul{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+header ul li{
+    list-style: none;
+    justify-content: space-between;
+    display: flex;
+    padding: 0em 0.5em;
+}

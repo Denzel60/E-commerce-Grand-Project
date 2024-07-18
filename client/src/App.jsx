@@ -11,6 +11,7 @@ import Reviews from './Pages/Reviews/Reviews'
 import Orders from './Pages/Orders/Orders'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route element={<Login />} path="/login" />
           <Route element={<Register />} path="/register" />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
