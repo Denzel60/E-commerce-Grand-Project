@@ -8,11 +8,6 @@ function Login() {
     const navigate = useNavigate();
     const setAuth = useAuthStore((state) => state.setAuth)
 
-    // const handleLogin = () => {
-    //     setAuth(true)
-    //     navigate('/dashboard')
-    // }
-
     const style = {
         color: "red"
     }
