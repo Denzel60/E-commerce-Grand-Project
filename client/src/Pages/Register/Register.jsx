@@ -1,34 +1,65 @@
-import useAuthStore from "../../store/AuthStore"
+// import useAuthStore from "../../store/AuthStore"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useFormik } from 'formik'
+// import { useState } from "react";
+import * as Yup from 'yup'
 
 function Register() {
 
     const navigate = useNavigate();
-    const setAuth = useAuthStore((state) => state.setAuth)
+    // const setAuth = useAuthStore((state) => state.setAuth)
+    // const [error, setError] = useState(false)
 
-    const handleRegister = () => {
-        setAuth(true)
-        navigate('/login')
+    const style = {
+        color: "red"
     }
+
+    const validationSchema = Yup.object({
+        firstName: Yup.string().required("First name is required"),
+        lastName: Yup.string().required("Last name is required"),
+        phoneNumber: Yup.string().required("Phone Number is required"),
+        email: Yup.string().email('Invalid email').required('Required'),
+        password: Yup.string().required('Password is required'),
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            email: "",
+            password: "",
+        },
+
+        onSubmit: (values) => {
+            console.log(values)
+            navigate('/login')
+        },
+
+        validationSchema: validationSchema,
+    })
+
     return (
         <div className="form">
-            <form action="">
+            <form onSubmit={formik.handleSubmit}>
+                <h3>Register</h3>
                 <div className="names-cont">
-                    <input type="text" placeholder="Enter your First Name eg John" />
-                    <input type="text" placeholder="Enter your Last Name eg Doe" />
+                    <input type="text" placeholder="Enter your First Name eg John" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                    <input type="text" placeholder="Enter your Last Name eg Doe" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                 </div>
-                <div className="names-cont">
-                    <input type="number" placeholder="Enter your Phone Number eg +25412345678" />
-                    <input type="number" placeholder="Enter your Additional Phone Number eg +25412345678" />
-                </div>
-                <input type="number" placeholder="Enter your Address eg 205-00526" />
-                <input type="email" placeholder="Enter your email eg johndoe@gmail.com" name="" id="" />
-                <div className="names-cont">
-                    <input type="text" placeholder="Enter your region eg Nyanza" />
-                    <input type="text" placeholder="Enter your city eg Nairobi" />
-                </div>
-                <input type="password" placeholder='Enter your password' name="" id="" />
-                <button onClick={handleRegister}>Register for an account</button>
+                {formik.touched.firstName && formik.errors.firstName && <div style={style}>Enter first name</div>}
+                {formik.touched.lastName && formik.errors.lastName && <div style={style}>Enter Last name</div>}
+
+                <input type="number" placeholder="Enter your Phone Number eg +25412345678" name="phoneNumber" value={formik.values.phoneNumber} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+
+                {formik.touched.phoneNumber && formik.errors.phoneNumber && <div style={style}>Enter phone number</div>}
+                <input type="email" placeholder="Enter your email eg johndoe@gmail.com" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                {formik.touched.email && formik.errors.email && <div style={style}>Enter email</div>}
+                <input type="password" placeholder='Enter your password' name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                {formik.touched.password && formik.errors.password && <div style={style}>Enter password</div>}
+                <button type="submit">Register for an account</button>
+                <p>Already have an account <Link to="/login">Login</Link></p>
             </form>
         </div>
     )

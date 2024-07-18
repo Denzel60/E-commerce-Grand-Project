@@ -15,6 +15,7 @@
 
 a {
   font-weight: 500;
+  font-size: 1.25em;
   color: rgba(0, 0, 0, 0.603);
   text-decoration: underline;
 }
@@ -70,7 +71,7 @@ button:focus-visible {
 }
 input{
   width: 80%;
-  height: 4em;
+  height: 3em;
   margin: 1em;
   background-color: white;
   color: black;
