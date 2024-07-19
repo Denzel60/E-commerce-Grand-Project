@@ -28,3 +28,14 @@ model user {
 
   @@map("User_table")
 }
+
+model products {
+  id          String @id @default(uuid())
+  Seller      String
+  image       String
+  category    String
+  price       Int
+  description String
+
+  @@map("Products_table")
+}
