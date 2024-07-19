@@ -1,6 +1,7 @@
 import './Login.css'
 import useAuthStore from "../../store/AuthStore"
 import useCredentialsStore from '../../store/CredentialsStore'
+import useAuthAdminStore from '../../store/AuthAdminStore'
 import { useNavigate, Link } from "react-router-dom"
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -9,6 +10,8 @@ function Login() {
     const navigate = useNavigate();
     const setAuth = useAuthStore((state) => state.setAuth)
     const setCredentials = useCredentialsStore((state) => state.setCredentials)
+    const setAuthAdmin = useAuthAdminStore((state) => state.setAuthAdmin)
+    const AuthAdmin = useAuthAdminStore((state) => state.AuthAdmin)
 
     const style = {
         color: "red"
@@ -29,6 +32,8 @@ function Login() {
             console.log(values)
             navigate("/dashboard")
             setAuth(true)
+            setAuthAdmin(true)
+            console.log(AuthAdmin)
             setCredentials(values)
         },
 

@@ -9,6 +9,7 @@ import Cart from './Pages/Cart/Cart'
 import Shop from './Pages/Shop/Shop'
 import Reviews from './Pages/Reviews/Reviews'
 import Orders from './Pages/Orders/Orders'
+import Sellers from './Pages/Seller/Sellers'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
@@ -20,6 +21,7 @@ function App() {
         <Header />
         <Routes>
           <Route element={<ProtectedRoutes />}>
+            <Route element={<Sellers />} path="/sellers" />
             <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<Profile />} path="/profile" />
             <Route element={<Shop />} path="/shop" />

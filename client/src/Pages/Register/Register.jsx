@@ -23,6 +23,29 @@ function Register() {
         password: Yup.string().required('Password is required'),
     })
 
+    const handleSubmit = async (values) => {
+        console.log(values)
+        // navigate('/login')
+        try {
+            const response = await fetch(`http://localhost:3020/api/user/register`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(values),
+            })
+            const data = await response.json();
+            console.log(data)
+            if (data.success === true) {
+                navigate("/login")
+            } else {
+                console.log(data.message)
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -32,10 +55,7 @@ function Register() {
             password: "",
         },
 
-        onSubmit: (values) => {
-            console.log(values)
-            navigate('/login')
-        },
+        onSubmit: handleSubmit,
 
         validationSchema: validationSchema,
     })

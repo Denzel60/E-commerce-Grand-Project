@@ -3,8 +3,19 @@ import userRoute from "./Routes/user.router.js";
 import productRoute from "./Routes/products.router.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 const app = express();
 config();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
