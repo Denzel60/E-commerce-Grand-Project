@@ -1,5 +1,6 @@
 import './Login.css'
 import useAuthStore from "../../store/AuthStore"
+import useCredentialsStore from '../../store/CredentialsStore'
 import { useNavigate, Link } from "react-router-dom"
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -7,6 +8,7 @@ import * as Yup from 'yup'
 function Login() {
     const navigate = useNavigate();
     const setAuth = useAuthStore((state) => state.setAuth)
+    const setCredentials = useCredentialsStore((state) => state.setCredentials)
 
     const style = {
         color: "red"
@@ -29,6 +31,7 @@ function Login() {
             console.log(values)
             navigate("/dashboard")
             setAuth(true)
+            setCredentials(values)
         },
 
         validationSchema: validationSchema,
