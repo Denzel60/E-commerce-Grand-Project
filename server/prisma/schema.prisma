@@ -14,29 +14,31 @@ datasource db {
 }
 
 model user {
-  id                    String  @id @default(uuid())
+  id                    String     @id @default(uuid())
   firstName             String
   lastName              String
-  phoneNumber           Int     @unique
-  email                 String  @unique
+  phoneNumber           Int        @unique
+  email                 String     @unique
   password              String
   additionalPhoneNumber String?
   address               Int?
   region                String?
   city                  String?
   role                  String?
+  products              products[]
 
   @@map("User_table")
 }
 
 model products {
   id          String @id @default(uuid())
-  sellerId    String
   Seller      String
   image       String
   category    String
   price       Int
   description String
+  sellerId    String
+  user        user   @relation(fields: [sellerId], references: [id])
 
   @@map("Products_table")
 }

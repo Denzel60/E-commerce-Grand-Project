@@ -4,18 +4,18 @@ const prisma = new PrismaClient();
 export const createProduct = async (req, res) => {
   try {
     const user = req.user;
-    const seller = user.email;
+    const sellerEmail = user.email;
     const sellerId = user.id;
     const { image, category, price, description } = req.body;
 
     const createProduct = await prisma.products.create({
       data: {
-        Seller: seller,
-        sellerId: sellerId,
+        Seller: sellerEmail,
         image: image,
         category: category,
         price: price,
         description: description,
+        sellerId: sellerId,
       },
     });
     res.status(201).json({ success: true, message: createProduct });
