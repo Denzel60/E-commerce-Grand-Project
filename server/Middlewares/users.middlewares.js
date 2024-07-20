@@ -33,5 +33,14 @@ export const validateInformation = async (req, res, next) => {
     return res
       .status(400)
       .json({ success: false, message: "Email already exists" });
+
+  const userWithPhoneNumber = await prisma.user.findFirst({
+    where: { phoneNumber: phoneNumber },
+  });
+
+  if (userWithPhoneNumber)
+    return res
+      .status(400)
+      .json({ success: false, message: "Phone Number already exists" });
   next();
 };

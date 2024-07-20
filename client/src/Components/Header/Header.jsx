@@ -37,7 +37,7 @@ function Header() {
                             <li><Link to="/dashboard">Dashboard</Link></li>
                             <li><Link to="/orders">Orders</Link></li>
                             <li><Link to="/profile">Profile</Link></li>
-                            <li>{Credentials.email}</li>
+                            <li>{Credentials.firstName}</li>
                             <li><Link to="/cart"><IoMdCart /></Link><span className='cartCount'>{cartItems.length}</span></li>
                             <button onClick={handleLogout}>Logout</button>
                         </ul>

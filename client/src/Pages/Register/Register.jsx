@@ -2,12 +2,13 @@
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useFormik } from 'formik'
-// import { useState } from "react";
+import { useState } from "react";
 import * as Yup from 'yup'
 
 function Register() {
 
     const navigate = useNavigate();
+    const [error, setError] = useState(false)
     // const setAuth = useAuthStore((state) => state.setAuth)
     // const [error, setError] = useState(false)
 
@@ -24,8 +25,6 @@ function Register() {
     })
 
     const handleSubmit = async (values) => {
-        console.log(values)
-        // navigate('/login')
         try {
             const response = await fetch(`http://localhost:3020/api/user/register`, {
                 method: 'POST',
@@ -39,10 +38,10 @@ function Register() {
             if (data.success === true) {
                 navigate("/login")
             } else {
-                console.log(data.message)
+                setError(data.message)
             }
         } catch (error) {
-            console.log(error.message)
+            setError(error.message)
         }
     }
 
@@ -78,6 +77,7 @@ function Register() {
                 {formik.touched.email && formik.errors.email && <div style={style}>Enter email</div>}
                 <input type="password" placeholder='Enter your password' name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                 {formik.touched.password && formik.errors.password && <div style={style}>Enter password</div>}
+                {error && <div style={style}>{error}</div>}
                 <button type="submit">Register for an account</button>
                 <p>Already have an account <Link to="/login">Login</Link></p>
             </form>
