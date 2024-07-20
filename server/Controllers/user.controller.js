@@ -97,3 +97,21 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getSellers = async (req, res) => {
+  try {
+    const getSellers = await prisma.user.findMany({
+      where: { role: "seller" },
+      select: {
+        firstName: true,
+        lastName: true,
+        phoneNumber: true,
+        email: true,
+        role: true,
+      },
+    });
+    res.status(201).json({ success: true, message: getSellers });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

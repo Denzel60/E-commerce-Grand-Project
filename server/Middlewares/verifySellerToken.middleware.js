@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-const verifyToken = (req, res, next) => {
+const verifySellerToken = (req, res, next) => {
   const token = req.cookies.E_commerce_token;
-  console.log(token);
+
   if (!token)
     return res.status(401).json({ success: false, message: "Token not found" });
 
@@ -11,8 +11,13 @@ const verifyToken = (req, res, next) => {
 
     req.user = decoded;
 
+    if (decoded.role !== "seller")
+      return res
+        .status(401)
+        .json({ success: false, message: "You are not authorized" });
+
     next();
   });
 };
 
-export default verifyToken;
+export default verifySellerToken;
