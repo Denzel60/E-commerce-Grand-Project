@@ -10,6 +10,7 @@ import Shop from './Pages/Shop/Shop'
 import Reviews from './Pages/Reviews/Reviews'
 import Orders from './Pages/Orders/Orders'
 import Sellers from './Pages/Seller/Sellers'
+import Buyers from './Pages/Buyers/Buyers'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
@@ -28,6 +29,7 @@ function App() {
             <Route element={<Reviews />} path="/reviews" />
             <Route element={<Cart />} path="/cart" />
             <Route element={<Orders />} path="/orders" />
+            <Route element={<Buyers />} path="/buyers" />
           </Route>
           <Route element={<Home />} path="/" exact />
           <Route element={<Login />} path="/login" />

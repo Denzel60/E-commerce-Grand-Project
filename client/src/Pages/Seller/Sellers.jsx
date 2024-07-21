@@ -29,12 +29,12 @@ function Sellers() {
         fetchData();
     }, []);
 
-    const updateSeller = () => {
-        console.log("update seller")
+    const updateSeller = (seller) => {
+        console.log(seller)
     }
 
-    const deleteSeller = () => {
-        console.log("delete seller")
+    const deleteSeller = (seller) => {
+        console.log(seller)
     }
 
     return (
