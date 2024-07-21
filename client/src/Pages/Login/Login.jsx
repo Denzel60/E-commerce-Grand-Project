@@ -39,13 +39,14 @@ function Login() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(values),
+                credentials: 'include'
             })
             const data = await response.json();
             setCredentials(data.data)
             // console.log(data)
             if (data.success === true) {
                 if (data.data.role == "seller") {
-                    navigate("/sellers")
+                    navigate("/orders")
                     setAuthSeller(true)
                     setAuth(true)
                 } else if (data.data.role === null) {

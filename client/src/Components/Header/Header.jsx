@@ -45,6 +45,7 @@ function Header() {
                                         <li><Link to="/dashboard">Dashboard</Link></li>
 
                                         <li><Link to="/profile">Profile</Link></li>
+                                        <li>Buyer</li>
                                         <li>{Credentials.firstName}</li>
                                         <li><Link to="/cart"><IoMdCart /></Link><span className='cartCount'>{cartItems.length}</span></li>
 
@@ -56,6 +57,7 @@ function Header() {
                             AuthSeller ? <div>
                                 <ul>
                                     <li><Link to="/orders">Orders</Link></li>
+                                    <li>Seller</li>
 
                                     <button onClick={handleLogout}>Logout</button>
                                 </ul>
@@ -67,6 +69,7 @@ function Header() {
                                     <ul>
                                         <li><Link to="/sellers">Sellers</Link></li>
                                         <li><Link to="/profile">Profile</Link></li>
+                                        <li>Admin</li>
                                         <button onClick={handleLogout}>Logout</button>
                                     </ul>
                                 </div> : null

@@ -21,21 +21,25 @@ table{
 }
 tr{
     display: flex;
+    height: 4em;
 }
 tr:nth-child(even){
     background-color: #e3e4e4;
 }
 th{
     border-bottom: 2px solid grey;
+    border-right: 2px solid grey;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: 9%;
 }
 td{
     border-bottom: 2px solid grey;
+    border-right: 2px solid grey;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: 9%;
+    line-break:anywhere;
 }
