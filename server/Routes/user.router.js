@@ -5,6 +5,8 @@ import {
   updateUser,
   getSellers,
   getBuyers,
+  getRequestBuyers,
+  updateUserRole,
 } from "../Controllers/user.controller.js";
 import { validateInformation } from "../Middlewares/users.middlewares.js";
 import verifyToken from "../Middlewares/verifyToken.middleware.js";
@@ -20,5 +22,9 @@ route.post("/login", loginUser);
 route.get("/getSellers", verifyAdminToken, getSellers);
 
 route.get("/getAllBuyers", verifyAdminToken, getBuyers);
+
+route.get("/getRequestBuyers", verifyAdminToken, getRequestBuyers);
+
+route.patch("/updateUserRole/:id", verifyToken, updateUserRole);
 
 export default route;

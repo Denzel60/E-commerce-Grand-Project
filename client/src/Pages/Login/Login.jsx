@@ -16,7 +16,7 @@ function Login() {
     const setAuthSeller = useAuthSellerStore((state) => state.setAuthSeller)
     const setAuthBuyer = useAuthBuyerStore((state) => state.setAuthBuyer)
     const setCredentials = useCredentialsStore((state) => state.setCredentials)
-    const AuthBuyer = useAuthBuyerStore((state) => state.AuthBuyer)
+    // const AuthBuyer = useAuthBuyerStore((state) => state.AuthBuyer)
     // const Credentials = useCredentialsStore((state) => state.Credentials)
     const [error, setError] = useState(false)
     // const AuthAdmin = useAuthAdminStore((state) => state.AuthAdmin)
@@ -49,11 +49,10 @@ function Login() {
                     navigate("/orders")
                     setAuthSeller(true)
                     setAuth(true)
-                } else if (data.data.role === null) {
+                } else if (data.data.role === null || data.data.role === "request") {
                     navigate("/dashboard")
                     setAuth(true)
                     setAuthBuyer(true)
-                    console.log(AuthBuyer)
                 } else if (data.data.role == "admin") {
                     navigate("/sellers")
                     setAuthAdmin(true)

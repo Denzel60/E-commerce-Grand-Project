@@ -61,6 +61,22 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const updateUserRole = async (req, res) => {
+  const { role } = req.body;
+  try {
+    const id = req.params.id;
+    const updateUserRole = await prisma.user.update({
+      where: { id: id },
+      data: {
+        role: role,
+      },
+    });
+    res.status(200).json({ success: true, message: updateUserRole });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export const updateUser = async (req, res) => {
   try {
     const id = req.params.id;
@@ -111,6 +127,24 @@ export const getBuyers = async (req, res) => {
       },
     });
     res.status(201).json({ success: true, message: getBuyers });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getRequestBuyers = async (req, res) => {
+  try {
+    const getRequestBuyers = await prisma.user.findMany({
+      where: { role: "request" },
+      select: {
+        firstName: true,
+        lastName: true,
+        phoneNumber: true,
+        email: true,
+        role: true,
+      },
+    });
+    res.status(201).json({ success: true, message: getRequestBuyers });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
