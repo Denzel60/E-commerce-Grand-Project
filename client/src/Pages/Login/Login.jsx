@@ -1,7 +1,9 @@
 import './Login.css'
 import useAuthStore from "../../store/AuthStore"
 import useCredentialsStore from '../../store/CredentialsStore'
-// import useAuthAdminStore from '../../store/AuthAdminStore'
+import useAuthAdminStore from '../../store/AuthAdminStore'
+import useAuthSellerStore from '../../store/AuthSellerStore'
+import useAuthBuyerStore from '../../store/AuthBuyerStore'
 import { useNavigate, Link } from "react-router-dom"
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -10,9 +12,14 @@ import { useState } from 'react'
 function Login() {
     const navigate = useNavigate();
     const setAuth = useAuthStore((state) => state.setAuth)
+    const setAuthAdmin = useAuthAdminStore((state) => state.setAuthAdmin)
+    const setAuthSeller = useAuthSellerStore((state) => state.setAuthSeller)
+    const setAuthBuyer = useAuthBuyerStore((state) => state.setAuthBuyer)
     const setCredentials = useCredentialsStore((state) => state.setCredentials)
+    const AuthBuyer = useAuthBuyerStore((state) => state.AuthBuyer)
+    // const Credentials = useCredentialsStore((state) => state.Credentials)
     const [error, setError] = useState(false)
-    // const setAuthAdmin = useAuthAdminStore((state) => state.setAuthAdmin)
+    // const AuthAdmin = useAuthAdminStore((state) => state.AuthAdmin)
 
     const style = {
         color: "red"
@@ -34,12 +41,23 @@ function Login() {
                 body: JSON.stringify(values),
             })
             const data = await response.json();
+            setCredentials(data.data)
             // console.log(data)
             if (data.success === true) {
-                setAuth(true)
-                setCredentials(data.data)
-                navigate("/dashboard")
-                // setAuthAdmin(true)
+                if (data.data.role == "seller") {
+                    navigate("/sellers")
+                    setAuthSeller(true)
+                    setAuth(true)
+                } else if (data.data.role === null) {
+                    navigate("/dashboard")
+                    setAuth(true)
+                    setAuthBuyer(true)
+                    console.log(AuthBuyer)
+                } else if (data.data.role == "admin") {
+                    navigate("/sellers")
+                    setAuthAdmin(true)
+                    setAuth(true)
+                }
             } else {
                 setError(data.message)
             }

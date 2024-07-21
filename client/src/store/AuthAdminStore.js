@@ -11,6 +11,6 @@ const authAdminStore = (set) => ({
 });
 
 const useAuthAdminStore = create(
-  devtools(persist(authAdminStore, { name: "Auth" }))
+  devtools(persist(authAdminStore, { name: "AuthAdmin" }))
 );
 export default useAuthAdminStore;

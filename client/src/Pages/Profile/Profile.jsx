@@ -1,8 +1,11 @@
 import './Profile.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import useCredentialsStore from '../../store/CredentialsStore'
 
 function Profile() {
+
+    const Credentials = useCredentialsStore((state) => state.Credentials)
 
     const style = {
         color: "red"
@@ -42,10 +45,52 @@ function Profile() {
 
     return (
         <div className="form">
-            <form onSubmit={formik.handleSubmit}>
+            <div className='credentials'>
+                <table>
+                    <tr>
+                        <th>Fields</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>First name: </td>
+                        <td>{Credentials.firstName}</td>
+                    </tr>
+                    <tr>
+                        <td>Last name: </td>
+                        <td>{Credentials.lastName}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number: </td>
+                        <td>{Credentials.phoneNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Additional Phone Number: </td>
+                        <td>{Credentials.additionalPhoneNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td>{Credentials.email}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{Credentials.address}</td>
+                    </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td>{Credentials.region}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{Credentials.city}</td>
+                    </tr>
+                    <tr>
+                        <td>Role</td>
+                        <td>{Credentials.role}</td>
+                    </tr>
+                </table>
+            </div>
+            <form onSubmit={formik.handleSubmit} className='form-cont'>
                 <h3> Profile</h3>
-                <label htmlFor="image">Upload your photo</label>
-                <input type="file" placeholder="Upload your profile image" name="image" id="" />
                 <div className="names-cont">
                     <input type="text" placeholder="Enter your First Name eg John" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                     <input type="text" placeholder="Enter your Last Name eg Doe" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} onBlur={formik.handleBlur} />

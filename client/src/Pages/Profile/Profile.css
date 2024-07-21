@@ -1,6 +1,41 @@
-form{
+.form{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.form-cont{
+    width: 60%;
+}
+.credentials{
+    width: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+tr{
+    display: flex;
+}
+tr:nth-child(even){
+    background-color: #e3e4e4;
+}
+th{
+    border-bottom: 2px solid grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+td{
+    border-bottom: 2px solid grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
 }
