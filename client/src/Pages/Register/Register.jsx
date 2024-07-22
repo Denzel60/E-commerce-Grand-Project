@@ -34,7 +34,7 @@ function Register() {
                 body: JSON.stringify(values),
             })
             const data = await response.json();
-            console.log(data)
+            // console.log(data)
             if (data.success === true) {
                 navigate("/login")
             } else {
