@@ -51,8 +51,9 @@ model orders {
   name        String
   price       Int
   description String
-  category    String
   sellerId    String
   userId      String
   user        user   @relation(fields: [userId], references: [id])
+
+  @@map("Orders_table")
 }
