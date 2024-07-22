@@ -5,10 +5,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import useCredentialsStore from '../../store/CredentialsStore';
 import useAuthStore from '../../store/AuthStore';
+import useAuthBuyerStore from '../../store/AuthBuyerStore';
 import { useState } from 'react';
 
 function Footer() {
     const Credentials = useCredentialsStore((state) => state.Credentials)
+    const AuthBuyer = useAuthBuyerStore((state) => state.AuthBuyer)
     const Auth = useAuthStore((state) => state.Auth)
     const [request, setRequest] = useState([])
     const [id, setId] = useState()
@@ -43,12 +45,19 @@ function Footer() {
                 <h3><FaXTwitter /></h3>
                 <h3><FaLinkedin /></h3>
 
-                {
-                    Auth ? <button onClick={handleRequest}>Become A Seller</button> : null
-                }
+                <div>
+                    {
+                        Auth ?
+                            <div>
+                                {
+                                    AuthBuyer ? <button onClick={handleRequest}>Request to be a seller</button> : null
+                                }
+                            </div> : null
+                    }
+                </div>
             </div>
             <p>Copyright @{currentYear}. All rights reserved</p>
-        </footer>
+        </footer >
     )
 }
 

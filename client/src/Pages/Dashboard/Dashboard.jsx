@@ -24,7 +24,7 @@ function Dashboard() {
             description: "Lorem ipsum dolor sit amet"
         },
         {
-            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721374379/uahtyqsp4xyoym6r3tqe.jpg",
+            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721632749/hi36sezas943yzclghxw.webp",
             name: 'Phone',
             price: 1000,
             description: "Lorem ipsum dolor sit amet"

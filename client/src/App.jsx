@@ -11,6 +11,9 @@ import Reviews from './Pages/Reviews/Reviews'
 import Orders from './Pages/Orders/Orders'
 import Sellers from './Pages/Seller/Sellers'
 import Buyers from './Pages/Buyers/Buyers'
+import Products from './Pages/Products/Products'
+import CreateProduct from './Pages/CreateProduct/CreateProduct'
+import AllProducts from './Pages/AllProducts/AllProducts'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
@@ -23,6 +26,9 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoutes />}>
             <Route element={<Sellers />} path="/sellers" />
+            <Route element={<Products />} path="/products" />
+            <Route element={<CreateProduct />} path="/createProducts" />
+            <Route element={<AllProducts />} path="/AllProducts" />
             <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<Profile />} path="/profile" />
             <Route element={<Shop />} path="/shop" />
