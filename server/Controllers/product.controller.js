@@ -6,11 +6,12 @@ export const createProduct = async (req, res) => {
     const user = req.user;
     const sellerEmail = user.email;
     const sellerId = user.id;
-    const { image, category, price, description } = req.body;
+    const { name, image, category, price, description } = req.body;
 
     const createProduct = await prisma.products.create({
       data: {
         Seller: sellerEmail,
+        name: name,
         image: image,
         category: category,
         price: price,
@@ -31,6 +32,7 @@ export const getAllProducts = async (req, res) => {
         id: true,
         Seller: true,
         sellerId: true,
+        name: true,
         image: true,
         category: true,
         price: true,
@@ -53,6 +55,7 @@ export const getSpecificProduct = async (req, res) => {
         id: true,
         Seller: true,
         sellerId: true,
+        name: true,
         image: true,
         category: true,
         price: true,
@@ -74,6 +77,7 @@ export const deleteSpecificProduct = async (req, res) => {
         id: true,
         Seller: true,
         sellerId: true,
+        name: true,
         image: true,
         category: true,
         price: true,

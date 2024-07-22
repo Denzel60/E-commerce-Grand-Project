@@ -46,7 +46,7 @@ function Profile() {
     return (
         <div className="form">
             <div className='credentials'>
-                <table>
+                <table className='profile'>
                     <tr>
                         <th>Fields</th>
                         <th>Details</th>

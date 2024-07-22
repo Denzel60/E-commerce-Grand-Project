@@ -43,3 +43,9 @@ td{
     width: 9%;
     line-break:anywhere;
 }
+.profile{
+    width: 100%;
+}
+.profile tr{
+    width: 100%;
+}
