@@ -6,7 +6,7 @@ export const createOrder = async (req, res) => {
   const userId = user.id;
   const { image, name, price, description, sellerId } = req.body;
   try {
-    const createOrder = await prisma.order.create({
+    const createOrder = await prisma.orders.create({
       data: {
         userId: userId,
         image: image,

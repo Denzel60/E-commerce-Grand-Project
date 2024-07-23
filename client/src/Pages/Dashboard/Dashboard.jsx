@@ -1,57 +1,57 @@
 import useItemStore from '../../store/AddItemCart'
+import { useEffect, useState } from 'react'
 
 function Dashboard() {
     const addItemCart = useItemStore((state) => state.addItemCart)
-    const cartItems = useItemStore((state) => state.cartItems)
+    // const cartItems = useItemStore((state) => state.cartItems)
+    const [products, setProducts] = useState([])
 
-    const electronics = [
-        {
-            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721374379/uahtyqsp4xyoym6r3tqe.jpg",
-            name: 'TV',
-            price: 1000,
-            description: "Lorem ipsum dolor sit amet"
-        },
-        {
-            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721375991/yvtoqng5txrpvebaysgo.jpg",
-            name: 'Oven',
-            price: 1000,
-            description: "Lorem ipsum dolor sit amet"
-        },
-        {
-            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721375322/xcij0klqbaha77asgj3c.jpg",
-            name: 'Watch',
-            price: 1000,
-            description: "Lorem ipsum dolor sit amet"
-        },
-        {
-            image: "https://res.cloudinary.com/dsqpytomn/image/upload/v1721632749/hi36sezas943yzclghxw.webp",
-            name: 'Phone',
-            price: 1000,
-            description: "Lorem ipsum dolor sit amet"
-        },
-    ]
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3020/api/product/getAllProducts`, {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
+
+                if (data.success === true) {
+                    console.log(data);
+                    setProducts(data.message);
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleAddItem = (elect) => {
         addItemCart(
             {
-                id: Math.ceil(Math.random() * 1000000),
+                id: elect.id,
                 image: elect.image,
                 name: elect.name,
                 price: elect.price,
                 description: elect.description,
+                sellerId: elect.sellerId
             }
         )
-        console.log(cartItems)
+        // console.log(cartItems)
     }
     return (
         <div>
             <div className="electronic-items">
-                {electronics.map((elect, i) => (
+                {products.map((elect, i) => (
                     <div className="items" key={i}>
                         <img src={elect.image} alt="" />
-                        <h1>{elect.name}</h1>
-                        <p>{elect.price}</p>
-                        <p>{elect.description}</p>
+                        <h3>Name: {elect.name}</h3>
+                        {/* <p>{elect.id}</p> */}
+                        <p>Price: {elect.price}</p>
+                        {/* <p>Description: {elect.description}</p> */}
+                        <p>Seller: {elect.Seller}</p>
+                        {/* <p>SellerId: {elect.sellerId}</p> */}
                         <button onClick={() => handleAddItem(elect)}>+</button>
                     </div>
                 ))}
