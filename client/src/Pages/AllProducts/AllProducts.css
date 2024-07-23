@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     padding: 0.5em;
-    width: 30%;
+    width: 20%;
 }
 .products .product .product-right{
     display: flex;
@@ -26,10 +26,10 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0.5em;
-    width: 70%;
+    width: 80%;
 }
 .products .product .product-left img{
-    width: 50%;
+    width: 90%;
     object-fit: contain;
     border-radius: 1em;
 }

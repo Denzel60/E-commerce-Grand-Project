@@ -70,8 +70,8 @@ function Header() {
                             AuthAdmin ?
                                 <div>
                                     <ul>
-                                        <li><Link to="/sellers">Sellers</Link></li>
-                                        <li><Link to="/buyers">Buyers</Link></li>
+                                        <li><Link to="/admin/sellers">Sellers</Link></li>
+                                        <li><Link to="/admin/buyers">Buyers</Link></li>
                                         <li><Link to="/AllProducts">All Products</Link></li>
                                         <li><Link to="/profile">Profile</Link></li>
                                         <li>Admin</li>

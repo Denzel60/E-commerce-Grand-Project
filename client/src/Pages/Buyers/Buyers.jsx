@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function Buyers() {
   const [buyers, setBuyers] = useState([])
+  const [message, setMessage] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ function Buyers() {
         const data = await response.json();
 
         if (data.success === true) {
-          console.log(data.message)
+          // console.log(data.message)
           setBuyers(data.message);
         }
       } catch (error) {
@@ -28,11 +29,28 @@ function Buyers() {
     console.log(buyer)
   }
 
-  const deleteSeller = (buyer) => {
-    console.log(buyer)
+  const deleteBuyer = async (buyer) => {
+    try {
+      const response = await fetch(`http://localhost:3020/api/user/deleteUser/${buyer.id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      const data = await response.json();
+
+      if (data.success === true) {
+        setMessage("deleted successfully")
+      } else {
+        setMessage("Error Deleting")
+      }
+    } catch (error) {
+      console.log(error)
+      setMessage("Error deleting")
+    }
   }
 
   return <div>
+
+    <h2>Buyers</h2>
     <table>
       <tr>
         <th>Email</th>
@@ -60,12 +78,13 @@ function Buyers() {
             <td>{buyer.region}</td>
             <td>{buyer.city}</td>
             <td><button onClick={() => updateSeller(buyer)}>Update</button></td>
-            <td><button onClick={() => deleteSeller(buyer)}>Delete</button></td>
+            <td><button onClick={() => deleteBuyer(buyer)}>Delete</button></td>
           </tr>
 
         ))
       }
     </table>
+    <p>{message}</p>
   </div>
 }
 

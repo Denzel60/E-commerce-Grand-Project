@@ -7,6 +7,7 @@ import {
   getBuyers,
   getRequestBuyers,
   updateUserRole,
+  deleteUser,
 } from "../Controllers/user.controller.js";
 import { validateInformation } from "../Middlewares/users.middlewares.js";
 import verifyToken from "../Middlewares/verifyToken.middleware.js";
@@ -26,5 +27,7 @@ route.get("/getAllBuyers", verifyAdminToken, getBuyers);
 route.get("/getRequestBuyers", verifyAdminToken, getRequestBuyers);
 
 route.patch("/updateUserRole/:id", verifyToken, updateUserRole);
+
+route.delete("/deleteUser/:id", verifyToken, deleteUser);
 
 export default route;

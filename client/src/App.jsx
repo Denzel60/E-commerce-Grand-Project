@@ -25,7 +25,7 @@ function App() {
         <Header />
         <Routes>
           <Route element={<ProtectedRoutes />}>
-            <Route element={<Sellers />} path="/sellers" />
+            <Route element={<Sellers />} path="/admin/sellers" />
             <Route element={<SellersProducts />} path="/seller/products" />
             <Route element={<CreateProduct />} path="/createProducts" />
             <Route element={<AllProducts />} path="/AllProducts" />
@@ -35,7 +35,7 @@ function App() {
             <Route element={<Reviews />} path="/reviews" />
             <Route element={<Cart />} path="/cart" />
             <Route element={<Orders />} path="/orders" />
-            <Route element={<Buyers />} path="/buyers" />
+            <Route element={<Buyers />} path="/admin/buyers" />
           </Route>
           <Route element={<Home />} path="/" exact />
           <Route element={<Login />} path="/login" />

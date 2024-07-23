@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 function Sellers() {
     const [sellers, setSellers] = useState([])
+    const [message, setMessage] = useState()
+
     useEffect(() => {
         const fetchData = async () => {
             // setLoading(true)
@@ -33,13 +35,29 @@ function Sellers() {
         console.log(seller)
     }
 
-    const deleteSeller = (seller) => {
-        console.log(seller)
+    const deleteSeller = async (seller) => {
+        try {
+            const response = await fetch(`http://localhost:3020/api/user/deleteUser/${seller.id}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            const data = await response.json();
+
+            if (data.success === true) {
+                setMessage("deleted successfully")
+            } else {
+                setMessage("Error Deleting")
+            }
+        } catch (error) {
+            console.log(error)
+            setMessage("Error deleting")
+        }
     }
 
     return (
         <div>
 
+            <h2>Sellers</h2>
             <table>
                 <tr>
                     <th>Email</th>
@@ -74,8 +92,7 @@ function Sellers() {
                 }
             </table>
 
-
-
+            <p>{message}</p>
         </div>
     )
 }

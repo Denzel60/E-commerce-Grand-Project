@@ -119,6 +119,7 @@ export const getBuyers = async (req, res) => {
     const getBuyers = await prisma.user.findMany({
       where: { role: null },
       select: {
+        id: true,
         firstName: true,
         lastName: true,
         phoneNumber: true,
@@ -155,6 +156,7 @@ export const getSellers = async (req, res) => {
     const getSellers = await prisma.user.findMany({
       where: { role: "seller" },
       select: {
+        id: true,
         firstName: true,
         lastName: true,
         phoneNumber: true,
@@ -163,6 +165,19 @@ export const getSellers = async (req, res) => {
       },
     });
     res.status(201).json({ success: true, message: getSellers });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const deleteUser = await prisma.user.delete({
+      where: { id: id },
+    });
+    console.log(deleteUser);
+    res.status(201).json({ success: true, message: deleteUser });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

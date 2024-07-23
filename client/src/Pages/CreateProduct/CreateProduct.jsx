@@ -36,14 +36,7 @@ function CreateProduct() {
             } catch (error) {
                 console.log(error.message)
             }
-            // setProduct({
-            //     name: values.name,
-            //     price: values.price,
-            //     image: values.responseImg.data.secure_url,
-            //     description: values.description,
-            //     category: values.category
-            // })
-            console.log(product);
+            // console.log(product);
             const response = await fetch(`http://localhost:3020/api/product/createProduct`, {
                 method: 'POST',
                 headers: {
