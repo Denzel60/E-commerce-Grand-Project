@@ -1,5 +1,6 @@
 import useItemStore from '../../store/AddItemCart'
 import { useEffect, useState } from 'react'
+import "https://unpkg.com/@appnest/masonry-layout?module";
 
 function Dashboard() {
     const addItemCart = useItemStore((state) => state.addItemCart)
@@ -42,11 +43,11 @@ function Dashboard() {
     }
     return (
         <div>
-            <div className="electronic-items">
+            <masonry-layout cols="4" maxcolwidth="400" gap="10" debounce="500">
                 {products.map((elect, i) => (
                     <div className="items" key={i}>
                         <img src={elect.image} alt="" />
-                        <h3>Name: {elect.name}</h3>
+                        <h4>Name: {elect.name}</h4>
                         {/* <p>{elect.id}</p> */}
                         <p>Price: {elect.price}</p>
                         {/* <p>Description: {elect.description}</p> */}
@@ -55,7 +56,7 @@ function Dashboard() {
                         <button onClick={() => handleAddItem(elect)}>+</button>
                     </div>
                 ))}
-            </div>
+            </masonry-layout>
         </div>
     )
 }

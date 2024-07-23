@@ -53,7 +53,7 @@ function Cart() {
             <div className="electronic-items">
                 {
                     cartItems.map((item, i) => (
-                        <div className="items" key={i}>
+                        <div className="cart-items" key={i}>
                             <img src={item.image} alt="" />
                             <h1>{item.name}</h1>
                             <p>{item.price}</p>

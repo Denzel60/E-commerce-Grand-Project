@@ -21,3 +21,24 @@ export const createOrder = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getBuyerOrder = async (req, res) => {
+  try {
+    const user = req.user;
+    const userId = user.id;
+    const getBuyerOrder = await prisma.orders.findMany({
+      where: { userId: userId },
+      select: {
+        id: true,
+        image: true,
+        description: true,
+        price: true,
+        name: true,
+        sellerId: true,
+      },
+    });
+    res.status(200).json({ success: true, message: getBuyerOrder });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

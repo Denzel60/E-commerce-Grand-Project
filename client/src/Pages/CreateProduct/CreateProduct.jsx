@@ -7,8 +7,9 @@ function CreateProduct() {
 
     const [error, setError] = useState()
     const [imageInput, setImageInput] = useState()
-    // const [image, setImage] = useState()
+    const [image, setImage] = useState()
     const [product, setProduct] = useState({})
+    const [message, setMessage] = useState()
 
     const cloudName = "dsqpytomn";
     const preset = "E-commerce";
@@ -25,7 +26,7 @@ function CreateProduct() {
 
             try {
                 const responseImg = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, payload)
-                // setImage(responseImg.data.secure_url)
+                setImage(responseImg.data.secure_url)
                 setProduct({
                     name: values.name,
                     price: values.price,
@@ -48,9 +49,11 @@ function CreateProduct() {
             const data = await response.json();
             console.log(data)
             if (data.success === true) {
-                setError("Created Successfully")
+                setMessage("Created Successfully")
+                setError(false)
             } else {
                 setError(data.message)
+                console.log(data.message);
             }
         } catch (error) {
             setError(error.message)
@@ -84,8 +87,10 @@ function CreateProduct() {
         <div className="form">
             <form onSubmit={formik.handleSubmit}>
                 <h3>Create Product</h3>
+                <img src={image} alt="" style={{ objectFit: "contain", width: "90%" }} />
 
-                {error}
+                <p style={{ color: "red" }}>{error}</p>
+                <p style={{ color: "red" }}>{message}</p>
 
                 <input type="text" placeholder="Enter your Name of your Product eg Phone" name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                 {formik.touched.name && formik.errors.name && <div style={style}>Enter phone number</div>}

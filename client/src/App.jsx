@@ -28,7 +28,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route element={<Sellers />} path="/admin/sellers" />
             <Route element={<SellersProducts />} path="/seller/products" />
-            <Route element={<CreateProduct />} path="/createProducts" />
+            <Route element={<CreateProduct />} path="/seller/createProducts" />
             <Route element={<AllProducts />} path="/AllProducts" />
             <Route element={<BuyerRequest />} path="/admin/BuyerRequest" />
             <Route element={<Dashboard />} path="/dashboard" />
@@ -36,7 +36,7 @@ function App() {
             <Route element={<Shop />} path="/shop" />
             <Route element={<Reviews />} path="/reviews" />
             <Route element={<Cart />} path="/cart" />
-            <Route element={<Orders />} path="/orders" />
+            <Route element={<Orders />} path="/buyer/orders" />
             <Route element={<Buyers />} path="/admin/buyers" />
           </Route>
           <Route element={<Home />} path="/" exact />
