@@ -14,7 +14,7 @@ function SellersProducts() {
                 const data = await response.json();
 
                 if (data.success === true) {
-                    console.log(data);
+                    // console.log(data);
                     setProducts(data.message);
                 }
             } catch (error) {
@@ -34,11 +34,11 @@ function SellersProducts() {
                                 <img src={product.image} alt="" />
                             </div>
                             <div className="product-right">
-                                <h4>Name: {product.name}</h4>
-                                <p>Price: {product.price}</p>
-                                <h4>Seller: {product.Seller}</h4>
-                                <p>Description: {product.description}</p>
-                                <p>Category: {product.category}</p>
+                                <h4><b>Name:</b> {product.name}</h4>
+                                <p><b>Price:</b> {product.price}</p>
+                                <h4><b>Seller:</b>{product.Seller}</h4>
+                                <p><b>Description:</b> {product.description}</p>
+                                <p><b>Category:</b> {product.category}</p>
                             </div>
                         </div>
                     ))

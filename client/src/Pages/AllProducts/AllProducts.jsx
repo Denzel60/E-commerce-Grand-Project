@@ -1,5 +1,6 @@
 import './AllProducts.css'
 import { useEffect, useState } from "react";
+import "https://unpkg.com/@appnest/masonry-layout?module";
 
 function AllProducts() {
     const [products, setProducts] = useState([])
@@ -26,24 +27,23 @@ function AllProducts() {
     }, []);
     return (
         <div>
-            <div className="products">
+            {/* <div className="products"> */}
+            <masonry-layout cols="4" maxcolwidth="400" gap="10" debounce="500">
                 {
                     products.map((product, i) => (
-                        <div className="product" key={i}>
-                            <div className="product-left">
-                                <img src={product.image} alt="" />
-                            </div>
-                            <div className="product-right">
-                                <h4>Name: {product.name}</h4>
-                                <p>Price: {product.price}</p>
-                                <h4>Seller: {product.Seller}</h4>
-                                <p>Description: {product.description}</p>
-                                <p>Category: {product.category}</p>
-                            </div>
+                        <div className="items" key={i}>
+                            <img src={product.image} alt="" />
+
+                            <h4>Name: {product.name}</h4>
+                            <p>Price: {product.price}</p>
+                            <h4>Seller: {product.Seller}</h4>
+                            <p>Description: {product.description}</p>
+                            <p>Category: {product.category}</p>
+
                         </div>
                     ))
                 }
-            </div>
+            </masonry-layout>
         </div>
     )
 }

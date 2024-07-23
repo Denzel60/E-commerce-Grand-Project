@@ -6,7 +6,7 @@ import Profile from './Pages/Profile/Profile'
 import Home from './Pages/Home/Home'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Cart from './Pages/Cart/Cart'
-import Shop from './Pages/Shop/Shop'
+import PlacedOrders from './Pages/PlacedOrders/PlacedOrders'
 import Reviews from './Pages/Reviews/Reviews'
 import Orders from './Pages/Orders/Orders'
 import Sellers from './Pages/Seller/Sellers'
@@ -33,7 +33,7 @@ function App() {
             <Route element={<BuyerRequest />} path="/admin/BuyerRequest" />
             <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<Profile />} path="/profile" />
-            <Route element={<Shop />} path="/shop" />
+            <Route element={<PlacedOrders />} path="/seller/placedOrders" />
             <Route element={<Reviews />} path="/reviews" />
             <Route element={<Cart />} path="/cart" />
             <Route element={<Orders />} path="/buyer/orders" />

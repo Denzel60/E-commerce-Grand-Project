@@ -42,3 +42,23 @@ export const getBuyerOrder = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const deleteOrder = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deleteOrder = await prisma.orders.delete({
+      where: { id: id },
+      select: {
+        id: true,
+        image: true,
+        description: true,
+        price: true,
+        name: true,
+        sellerId: true,
+      },
+    });
+    res.status(200).json({ success: true, message: deleteOrder });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
