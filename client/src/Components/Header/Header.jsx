@@ -57,7 +57,7 @@ function Header() {
                             AuthSeller ? <div>
                                 <ul>
                                     <li><Link to="/orders">Orders</Link></li>
-                                    <li><Link to="/products">My Products</Link></li>
+                                    <li><Link to="/seller/products">My Products</Link></li>
                                     <li><Link to="/AllProducts">All Products</Link></li>
                                     <li><Link to="/createProducts">Create Products</Link></li>
                                     <li>Seller</li>

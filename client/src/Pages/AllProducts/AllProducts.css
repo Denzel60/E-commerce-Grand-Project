@@ -1,0 +1,35 @@
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.products .product{
+    display: flex;
+    width: 90%;
+    padding: 1em;
+    margin: 1em;
+    background-color: white;
+    border-radius: 1em;
+}
+.products .product .product-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    width: 30%;
+}
+.products .product .product-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.5em;
+    width: 70%;
+}
+.products .product .product-left img{
+    width: 50%;
+    object-fit: contain;
+    border-radius: 1em;
+}
