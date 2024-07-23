@@ -72,6 +72,7 @@ function Header() {
                                     <ul>
                                         <li><Link to="/admin/sellers">Sellers</Link></li>
                                         <li><Link to="/admin/buyers">Buyers</Link></li>
+                                        <li><Link to="/admin/BuyerRequest">BuyersRequests</Link></li>
                                         <li><Link to="/AllProducts">All Products</Link></li>
                                         <li><Link to="/profile">Profile</Link></li>
                                         <li>Admin</li>

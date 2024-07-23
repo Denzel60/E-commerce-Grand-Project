@@ -14,6 +14,7 @@ import Buyers from './Pages/Buyers/Buyers'
 import SellersProducts from './Pages/Sellers Products/SellersProducts'
 import CreateProduct from './Pages/CreateProduct/CreateProduct'
 import AllProducts from './Pages/AllProducts/AllProducts'
+import BuyerRequest from './Pages/BuyerRequest/BuyerRequest'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
@@ -29,6 +30,7 @@ function App() {
             <Route element={<SellersProducts />} path="/seller/products" />
             <Route element={<CreateProduct />} path="/createProducts" />
             <Route element={<AllProducts />} path="/AllProducts" />
+            <Route element={<BuyerRequest />} path="/admin/BuyerRequest" />
             <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<Profile />} path="/profile" />
             <Route element={<Shop />} path="/shop" />

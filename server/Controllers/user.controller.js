@@ -138,6 +138,7 @@ export const getRequestBuyers = async (req, res) => {
     const getRequestBuyers = await prisma.user.findMany({
       where: { role: "request" },
       select: {
+        id: true,
         firstName: true,
         lastName: true,
         phoneNumber: true,
