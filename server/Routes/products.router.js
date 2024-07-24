@@ -4,6 +4,7 @@ import {
   getAllProducts,
   getSpecificProduct,
   deleteSpecificProduct,
+  getAllProductsWithoutId,
   //   updateProduct,
 } from "../Controllers/product.controller.js";
 import verifyToken from "../Middlewares/verifyToken.middleware.js";
@@ -19,6 +20,8 @@ route.post(
 );
 
 route.get("/getAllProducts", verifyToken, getAllProducts);
+
+route.get("/getAllProductsWithoutId", getAllProductsWithoutId);
 
 route.get("/getSpecificProduct", verifySellerToken, getSpecificProduct);
 

@@ -43,6 +43,27 @@ export const getBuyerOrder = async (req, res) => {
   }
 };
 
+export const getSellerOrder = async (req, res) => {
+  try {
+    const user = req.user;
+    const sellerId = user.id;
+    const getSellerOrder = await prisma.orders.findMany({
+      where: { sellerId: sellerId },
+      select: {
+        id: true,
+        image: true,
+        description: true,
+        price: true,
+        name: true,
+        userId: true,
+      },
+    });
+    res.status(200).json({ success: true, message: getSellerOrder });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export const deleteOrder = async (req, res) => {
   try {
     const id = req.params.id;

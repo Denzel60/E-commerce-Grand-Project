@@ -45,6 +45,26 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
+export const getAllProductsWithoutId = async (req, res) => {
+  try {
+    const getAllProductsWithoutId = await prisma.products.findMany({
+      select: {
+        id: true,
+        Seller: true,
+        sellerId: true,
+        name: true,
+        image: true,
+        category: true,
+        price: true,
+        description: true,
+      },
+    });
+    res.status(200).json({ success: true, message: getAllProductsWithoutId });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export const getSpecificProduct = async (req, res) => {
   try {
     const user = req.user;
