@@ -31,7 +31,14 @@ function Footer() {
                 body: JSON.stringify(request),
                 credentials: 'include'
             })
-            console.log(response);
+            // console.log(response);
+            const data = await response.json()
+            console.log(data);
+            if (data.success === true) {
+                alert("Request sent successfully")
+            } else {
+                alert("Please try again")
+            }
         } catch (error) {
             console.log(error)
         }

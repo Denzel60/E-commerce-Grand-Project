@@ -21,7 +21,7 @@ function Cart() {
             description: item.description,
             sellerId: item.sellerId,
         })
-        console.log(order);
+        // console.log(order);
         try {
             const response = await fetch(`http://localhost:3020/api/order/createOrder`, {
                 method: 'POST',

@@ -34,11 +34,11 @@ function PlacedOrders() {
                     <div className="items" key={i}>
                         <img src={elect.image} alt="" />
                         <h4>Name: {elect.name}</h4>
-                        {/* <p>{elect.id}</p> */}
+                        <p>{elect.id}</p>
                         <p>Price: {elect.price}</p>
                         {/* <p>Description: {elect.description}</p> */}
                         <p>Seller: {elect.Seller}</p>
-                        {/* <p>SellerId: {elect.sellerId}</p> */}
+                        <p>SellerId: {elect.sellerId}</p>
                         {/* <button onClick={() => handleAddItem(elect)}>+</button> */}
                     </div>
                 ))}

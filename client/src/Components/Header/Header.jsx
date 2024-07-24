@@ -34,8 +34,8 @@ function Header() {
                 Auth ?
                     <div className='header'>
                         {
-                            AuthBuyer
-                                ? <div className='header'>
+                            AuthBuyer ?
+                                <div className='header'>
                                     <div className="search">
                                         <input type="text" placeholder='Search Product, Brand, Category' name="" id="" />
                                         <button>Search</button>
@@ -55,17 +55,20 @@ function Header() {
                                 </div> : null
                         }
                         {
-                            AuthSeller ? <div>
-                                <ul>
-                                    <li><Link to="/seller/placedOrders">Placed Orders</Link></li>
-                                    <li><Link to="/seller/products">My Products</Link></li>
-                                    <li><Link to="/AllProducts">All Products</Link></li>
-                                    <li><Link to="/seller/createProducts">Create Products</Link></li>
-                                    <li>Seller</li>
+                            AuthSeller ?
+                                <div>
+                                    <ul>
+                                        <li><Link to="/seller/placedOrders">Placed Orders</Link></li>
+                                        <li><Link to="/seller/products">My Products</Link></li>
+                                        <li><Link to="/AllProducts">All Products</Link></li>
+                                        <li><Link to="/seller/createProducts">Create Products</Link></li>
+                                        <li><Link to="/profile">Profile</Link></li>
+                                        <li>Seller</li>
+                                        <li>{Credentials.firstName}</li>
 
-                                    <button onClick={handleLogout}>Logout</button>
-                                </ul>
-                            </div> : null
+                                        <button onClick={handleLogout}>Logout</button>
+                                    </ul>
+                                </div> : null
                         }
                         {
                             AuthAdmin ?
@@ -77,6 +80,7 @@ function Header() {
                                         <li><Link to="/AllProducts">All Products</Link></li>
                                         <li><Link to="/profile">Profile</Link></li>
                                         <li>Admin</li>
+                                        <li>{Credentials.firstName}</li>
                                         <button onClick={handleLogout}>Logout</button>
                                     </ul>
                                 </div> : null
