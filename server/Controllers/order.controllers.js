@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 export const createOrder = async (req, res) => {
   const user = req.user;
   const userId = user.id;
+  const userEmail = user.email;
+  const userPhoneNumber = user.phoneNumber;
   const { image, name, price, description, sellerId } = req.body;
   try {
     const createOrder = await prisma.orders.create({
@@ -13,6 +15,8 @@ export const createOrder = async (req, res) => {
         name: name,
         price: price,
         description: description,
+        userEmail: userEmail,
+        userPhoneNumber: userPhoneNumber,
         sellerId: sellerId,
       },
     });
@@ -35,6 +39,7 @@ export const getBuyerOrder = async (req, res) => {
         price: true,
         name: true,
         sellerId: true,
+        userPhoneNumber: true,
       },
     });
     res.status(200).json({ success: true, message: getBuyerOrder });
@@ -56,6 +61,7 @@ export const getSellerOrder = async (req, res) => {
         price: true,
         name: true,
         userId: true,
+        userPhoneNumber: true,
       },
     });
     res.status(200).json({ success: true, message: getSellerOrder });
@@ -69,14 +75,6 @@ export const deleteOrder = async (req, res) => {
     const id = req.params.id;
     const deleteOrder = await prisma.orders.delete({
       where: { id: id },
-      select: {
-        id: true,
-        image: true,
-        description: true,
-        price: true,
-        name: true,
-        sellerId: true,
-      },
     });
     res.status(200).json({ success: true, message: deleteOrder });
   } catch (error) {

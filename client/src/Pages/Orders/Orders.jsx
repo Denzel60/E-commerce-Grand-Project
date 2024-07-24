@@ -39,6 +39,7 @@ function Orders() {
             const data = await response.json();
 
             if (data.success === true) {
+                console.log(data);
                 setMessage("Deleted Successfully")
                 setError(false)
                 setOrders(orders.filter((product) => product.id !== id))

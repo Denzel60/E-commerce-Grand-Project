@@ -46,7 +46,7 @@ function Login() {
             // console.log(data)
             if (data.success === true) {
                 if (data.data.role == "seller") {
-                    navigate("/orders")
+                    navigate("/seller/placedOrders")
                     setAuthSeller(true)
                     setAuth(true)
                 } else if (data.data.role === null || data.data.role === "request") {
@@ -54,7 +54,7 @@ function Login() {
                     setAuth(true)
                     setAuthBuyer(true)
                 } else if (data.data.role == "admin") {
-                    navigate("/sellers")
+                    navigate("/admin/sellers")
                     setAuthAdmin(true)
                     setAuth(true)
                 }

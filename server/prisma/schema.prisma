@@ -46,14 +46,16 @@ model products {
 }
 
 model orders {
-  id          String @id @default(uuid())
-  image       String
-  name        String
-  price       Int
-  description String
-  sellerId    String
-  userId      String
-  user        user   @relation(fields: [userId], references: [id])
+  id              String @id @default(uuid())
+  image           String
+  name            String
+  price           Int
+  description     String
+  sellerId        String
+  userEmail       String
+  userPhoneNumber Int
+  userId          String
+  user            user   @relation(fields: [userId], references: [id])
 
   @@map("Orders_table")
 }

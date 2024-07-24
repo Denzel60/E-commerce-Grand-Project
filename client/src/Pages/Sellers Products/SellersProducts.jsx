@@ -24,6 +24,10 @@ function SellersProducts() {
 
         fetchData();
     }, []);
+
+    const handleDeleteProduct = (product) => {
+        console.log(product);
+    }
     return (
         <div>
             <div className="products">
@@ -39,6 +43,7 @@ function SellersProducts() {
                                 <h4><b>Seller:</b>{product.Seller}</h4>
                                 <p><b>Description:</b> {product.description}</p>
                                 <p><b>Category:</b> {product.category}</p>
+                                <button onClick={() => handleDeleteProduct(product)}>Delete Your Product</button>
                             </div>
                         </div>
                     ))

@@ -48,7 +48,7 @@ function Dashboard() {
                     <div className="items" key={i}>
                         <img src={elect.image} alt="" />
                         <h4>Name: {elect.name}</h4>
-                        {/* <p>{elect.id}</p> */}
+                        <p>{elect.category}</p>
                         <p>Price: {elect.price}</p>
                         {/* <p>Description: {elect.description}</p> */}
                         <p>Seller: {elect.Seller}</p>
